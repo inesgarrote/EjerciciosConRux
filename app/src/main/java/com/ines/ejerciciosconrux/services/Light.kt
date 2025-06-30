@@ -16,6 +16,7 @@ class Light: Light() {
         const val YELLOW = com.leitianpai.robotsdk.commandlib.Light.YELLOW
         const val CYAN = com.leitianpai.robotsdk.commandlib.Light.CYAN
         const val BLACK = com.leitianpai.robotsdk.commandlib.Light.BLACK
+        const val PURPLE = com.leitianpai.robotsdk.commandlib.Light.PURPLE
 
         fun getLight(color: Int): Int {
             return color

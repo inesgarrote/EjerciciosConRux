@@ -20,7 +20,7 @@ class BlinkingLightMessageService(private val robotService: RobotService) {
 
     init {
         setIsFixedInterval(500)
-            .setEarColor(Light.YELLOW)
+           // .setEarColor(Light.YELLOW)
     }
 
     fun setCurrentEarsColor(currentEarsColor: Int): BlinkingLightMessageService {

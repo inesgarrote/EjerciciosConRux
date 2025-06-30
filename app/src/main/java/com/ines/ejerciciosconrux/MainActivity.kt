@@ -11,11 +11,15 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.ines.ejerciciosconrux.components.ArmRoutine
+import com.ines.ejerciciosconrux.components.BalanceRoutine
+import com.ines.ejerciciosconrux.components.FullBodyRoutine
+import com.ines.ejerciciosconrux.components.LegRoutine
 import com.ines.ejerciciosconrux.components.RuxInteraction
-import com.ines.ejerciciosconrux.components.mobilityroutine.MobilityRoutine
+import com.ines.ejerciciosconrux.components.MobilityRoutine
+import com.ines.ejerciciosconrux.components.StrechtingRoutine
 import com.ines.ejerciciosconrux.services.BluetoothServerThread
 import com.ines.ejerciciosconrux.services.SharedServices
 import java.util.UUID
@@ -152,13 +156,28 @@ class MainActivity : AppCompatActivity() {
             "ROTACION_BRAZOS" -> MobilityRoutine().armRotationExercise(sharedServices)
             "GIRO_CINTURA" -> MobilityRoutine().waistTwistExercise(sharedServices)
             "MARCHA" -> MobilityRoutine().marchInPlaceExercise(sharedServices)
-            // Para el ejercicio si el usuario lo solicita
-            "PARAR_EJECUCION" -> RuxInteraction().stopAll(sharedServices)
             // Rutina Fortalecimiento de Piernas
-            // "BRAZOS"     -> ArmsRoutine().startRoutine(sharedServices)
-            // "EQUILIBRIO" -> BalanceRoutine().startRoutine(sharedServices)
-            // "RELAX"      -> RelaxRoutine().startRoutine(sharedServices)
-            // "COMPLETO"   -> FullBodyRoutine().startRoutine(sharedServices)
+            "LEVANTAMIENTO_RODILLAS" -> LegRoutine().kneeRaise(sharedServices)
+            "SENTADILLAS" -> LegRoutine().squat(sharedServices)
+            "ELEVACION_TALONES" -> LegRoutine().calfRaise(sharedServices)
+            // Rutina ejercicios para brazos
+            "FLEXIONES_BRAZOS" -> ArmRoutine().wallPushUp(sharedServices)
+            "ELEVACION_BRAZOS" -> ArmRoutine().lateralArmRaise(sharedServices)
+            "PRESION_PALMAS" -> ArmRoutine().palmPress(sharedServices)
+            // Rutina de Equilibrio y Estabilidad
+            "CAMINAR_LINEA" -> BalanceRoutine().walkStraightLine(sharedServices)
+            "EQUILIBRIO_PIERNA" -> BalanceRoutine().balanceOnOneLeg(sharedServices)
+            "PASOS_LATERALES" -> BalanceRoutine().sideSteps(sharedServices)
+            // Rutina de Relajación y Estiramiento
+            "ESTIRAMIENTO_BRAZOS" -> StrechtingRoutine().armStretchExercise(sharedServices)
+            "INCLINACION_TORSO" -> StrechtingRoutine().torsoBendExercise(sharedServices)
+            "ESTIRAMIENTO_PIERNAS" -> StrechtingRoutine().legStretchExercise(sharedServices)
+            // Rutina Completa
+            "MARCHA_COMPLETO" -> FullBodyRoutine().marchInPlaceExercise(sharedServices)
+            "SENTADILLAS_COMPLETO" -> FullBodyRoutine().squat(sharedServices)
+            "FLEXIONES_BRAZOS_COMPLETO" -> FullBodyRoutine().wallPushUp(sharedServices)
+            "EQUILIBRIO_PIERNA_COMPLETO" -> FullBodyRoutine().balanceOnOneLeg(sharedServices)
+            "INCLINACION_TORSO_COMPLETO" -> FullBodyRoutine().torsoBendExercise(sharedServices)
             else -> Log.w(TAG, "Comando desconocido: $cmd")
         }
     }
